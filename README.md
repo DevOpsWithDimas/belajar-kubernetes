@@ -1,4 +1,4 @@
-# belajar-kubernetes
+# Belajar Container-Orchestration System dengan Kubernetes
 
 Belajar kubernetes untuk pemula sampai mahir
 
