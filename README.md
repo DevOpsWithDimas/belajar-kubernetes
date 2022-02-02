@@ -13,4 +13,5 @@ Belajar kubernetes untuk pemula sampai mahir
     - Scale the deployment
     - Update your software with new version
     - Basic control of kubernetes cluster using minikube
+    - Using your own container image into minikube cluster
 3. Kubernetes workloads
