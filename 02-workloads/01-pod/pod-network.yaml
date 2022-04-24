@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fullstack
+  labels:
+    app: fullstack
+spec:
+  containers:
+    - name: frontend
+      image: nginx
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 80
+    - name: backend
+      image: bitnami/nginx
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080
+  restartPolicy: Always
