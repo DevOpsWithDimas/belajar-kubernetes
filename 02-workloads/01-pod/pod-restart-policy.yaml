@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-restart-policy
+  labels:
+    app: pod-restart-policy
+spec:
+  containers:
+    - name: pod-restart-policy
+      image: nginx:mainline
+      imagePullPolicy: IfNotPresent
+  restartPolicy: Always
