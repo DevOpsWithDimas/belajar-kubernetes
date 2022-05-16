@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: production
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: testing
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-prod
+  namespace: production
+  labels:
+    app: nginx
+    env/release: stable
+    env/tier: frontend
+spec:
+  containers:
+    - name: nginx-prod
+      image: nginx:latest
+      imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-test
+  namespace: testing
+  labels:
+    app: nginx
+    env/release: latest
+    env/tier: frontend
+spec:
+  containers:
+    - name: nginx-test
+      image: nginx:mainline
+      imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+
