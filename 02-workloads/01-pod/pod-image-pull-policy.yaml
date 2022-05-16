@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-docker-hub
+  labels:
+    app: nginx-docker-hub
+spec:
+  containers:
+    - name: nginx-docker-hub
+      image: dimmaryanto93/kubernetes-cource:latest
+      imagePullPolicy: Always
+  restartPolicy: Always
