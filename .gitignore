@@ -40,3 +40,6 @@ fabric.properties
 
 ## MacOS
 .DS_Store
+
+## Docker Config
+.docker/
