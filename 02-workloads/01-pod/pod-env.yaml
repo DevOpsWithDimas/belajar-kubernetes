@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-env
+  labels:
+    app: mysql
+spec:
+  containers:
+    - name: pod-env
+      image: mysql:8.0
+      imagePullPolicy: IfNotPresent
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "1234KeepSecret"
+        - name: MYSQL_USER
+          value: "hr"
+        - name: MYSQL_DATABASE
+          value: "employees"
+        - name: MYSQL_PASSWORD
+          value: "hr"
+  restartPolicy: Always
