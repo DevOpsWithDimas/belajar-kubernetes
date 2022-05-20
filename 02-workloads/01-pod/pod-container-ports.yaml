@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-container-ports
+  labels:
+    app: pod-container-ports
+spec:
+  containers:
+    - name: pod-container-ports
+      image: nginx
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 80 # for http protocol
+        - containerPort: 443 # for https protocol
+  restartPolicy: OnFailure
