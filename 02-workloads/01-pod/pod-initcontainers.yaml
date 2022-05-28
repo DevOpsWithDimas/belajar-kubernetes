@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: database
+  labels:
+    app: database
+spec:
+  containers:
+    - name: database
+      image: postgres:14.2
+      env:
+        - name: POSTGRES_PASSWORD
+          value: password
+        - name: POSTGRES_DB
+          value: mydb
+        - name: POSTGRES_USER
+          value: myuser
+      ports:
+        - containerPort: 5432
+      imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: database
+spec:
+  selector:
+    app: database
+  ports:
+    - port: 5432
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapps
+  labels:
+    app: webapps
+spec:
+  containers:
+    - name: backend
+      image: nginx:mainline
+      imagePullPolicy: IfNotPresent
+  initContainers:
+    - name: db-info
+      image: flyway/flyway
+      env:
+        - name: DB_URL
+          value: jdbc:postgresql://database:5432/mydb
+        - name: DB_USER
+          value: myuser
+        - name: DB_PASSWD
+          value: password
+      args: [ '-url=$(DB_URL)', '-user=$(DB_USER)', '-password=$(DB_PASSWD)', 'info' ]
+  restartPolicy: Never
+
