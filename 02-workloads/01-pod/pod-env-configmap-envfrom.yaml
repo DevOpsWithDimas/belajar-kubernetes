@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-env-configmap-envfrom
+  labels:
+    app: postgresql
+spec:
+  containers:
+    - name: database
+      image: postgres:14.2
+      imagePullPolicy: IfNotPresent
+      envFrom:
+        - configMapRef:
+            name: db-config
+            optional: false
+  restartPolicy: Always
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+data:
+  POSTGRES_PASSWORD: crud_apps_secret
+  POSTGRES_USER: crud_apps
+  POSTGRES_DB: crud_apps
