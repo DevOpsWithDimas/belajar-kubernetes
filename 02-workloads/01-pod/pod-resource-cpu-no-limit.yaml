@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-resource-cpu-no-limit
+  labels:
+    app: pod-resource-cpu-no-limit
+spec:
+  containers:
+    - name: pod-resource-cpu-no-limit
+      image: vish/stress
+      imagePullPolicy: IfNotPresent
+      resources:
+        requests:
+          cpu: "1000m"
+      args: [ "-cpus=3" ]
+  restartPolicy: Always
