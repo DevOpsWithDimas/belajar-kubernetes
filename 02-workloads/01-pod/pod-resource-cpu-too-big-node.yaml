@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-resource-cpu-too-big-for-node
+  labels:
+    app: pod-resource-cpu-too-big-for-node
+spec:
+  containers:
+    - name: pod-resource-cpu-too-big-for-node
+      image: vish/stress
+      imagePullPolicy: IfNotPresent
+      resources:
+        requests:
+          cpu: "1000m"
+        limits:
+          cpu: "3"
+      args: [ "-cpus=3" ]
+  restartPolicy: Always
