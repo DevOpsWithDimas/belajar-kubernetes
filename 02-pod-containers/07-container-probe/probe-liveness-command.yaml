@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: probe-liveness-command
+  labels:
+    app: busybox
+    env: test
+spec:
+  containers:
+    - name: probe-liveness-command
+      image: k8s.gcr.io/busybox
+      args:
+        - /bin/sh
+        - -c
+        - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600;
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/healthy
+        initialDelaySeconds: 5
+        periodSeconds: 5
+      imagePullPolicy: IfNotPresent
+  restartPolicy: Always
