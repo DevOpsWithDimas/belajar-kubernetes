@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: probe-liveness-tcpsocket
+  labels:
+    app: nginx
+spec:
+  containers:
+    - name: probe-liveness-tcpsocket
+      image: nginx:mainline
+      ports:
+        - containerPort: 80
+          name: default
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        tcpSocket:
+          port: 8080
+        periodSeconds: 5
+        initialDelaySeconds: 5
+  restartPolicy: Always
