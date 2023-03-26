@@ -1,6 +1,6 @@
-# Belajar Container-Orchestration System dengan Kubernetes
+# Belajar Kubernetes (k8s)
 
-Belajar kubernetes untuk pemula sampai mahir
+Belajar Orchestration Container System dengan menggunakan Kubernetes untuk pemula sampai mahir
 
 1. Pengenalan Kubernetes
     - What is kubernetes?
