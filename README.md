@@ -30,3 +30,5 @@ Belajar Orchestration Container System dengan menggunakan Kubernetes untuk pemul
     - StatefulSet with PersistentVolume
     - DaemonSet
     - Job and CronJob
+
+    
